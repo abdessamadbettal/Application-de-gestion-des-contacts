@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>index</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Contact list</a>
-              <div>
-                <a class="navbar-brand fs-6" href="profile.html">Alex</a>
-                <a class="navbar-brand fs-6" href="contact.html">contact</a>
-                <a class="navbar-brand fs-6" href="index.html">logout</a>
-              </div>
-              
-            </div>
-          </nav>
-
-    </header>
-    <main>
+<?php 
+$title = "profile";
+$navbar = true ;
+include 'header.php';
+?>
         <div class="p-4">
             <div class="container p-3"  id="intro">
                 <p class="fs-1">welcome , alex !</p>
