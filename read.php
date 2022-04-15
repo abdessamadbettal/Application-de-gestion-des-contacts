@@ -8,7 +8,7 @@ $id = $_REQUEST['read'];
 $rows = $model->afficherSeule($id);
 echo "<pre>";
 // print_r($rows);
-echo $id;
+// echo $id;
 
 echo "</pre>";
 
@@ -18,8 +18,8 @@ if (!empty($rows)) {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">read contact</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="exampleModalLabel">CONTACT</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
                         <div class="card ">
