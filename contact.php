@@ -1,14 +1,19 @@
+<?php 
+include 'header.php';
+include 'crud.php';
+// session_start();
+
+?>
 <?php
 $title = "profile";
 $navbar = true;
-include 'header.php';
-include 'crud.php';
+
 ?>
 <div class="p-4">
     <div class="container p-3" id="intro">
 
 
-        <p class="fs-1">Contact list</p>
+        <p class="fs-1">Contact list <?php echo $_SESSION['ID_USER'] ?></p>
         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addcontact">Add contact</button>
         <table class="table table-hover">
             <thead>
@@ -26,6 +31,7 @@ include 'crud.php';
                 
                 echo "<pre>";
                 print_r($rows);
+                echo $id ;
                 // echo $rows['NAME'] ;
                 echo "</pre>";
                 $i = 1;
@@ -44,21 +50,21 @@ include 'crud.php';
                                 <div class="d-flex ">
                                     <!-- <a href="delet.php?edit=<?php /* $row['ID']; */ ?>" class="badge bg-primary text-decoration-none m-1">Edit</a> -->
                                     <!-- <a href="contact.php?delet=<?php /* $row['ID']; */ ?>" class="badge bg-danger text-decoration-none m-1">Delet</a> -->
-                                    <a href="contact.php?supermer=<?= $row['ID']; ?>" class="badge bg-danger text-decoration-none m-1">delet</a>
-                                    <a href="read.php?read=<?= $row['ID']; ?>" class="badge bg-info text-decoration-none m-1">afficher dans un autre page</a>
+                                    <a href="contact.php?supermer=<?= $row['CONTACT_ID']; ?>" class="badge bg-danger text-decoration-none m-1">delet</a>
+                                    <a href="read.php?read=<?= $row['CONTACT_ID']; ?>" class="badge bg-info text-decoration-none m-1">afficher dans un autre page</a>
 
                                 </div>
                                 <!-- // pour le model -->
                                 <div class="d-flex ">
-                                    <button data-bs-toggle="modal" data-bs-target="#editcontact<?= $row['ID'] ?>" class="badge bg-primary text-decoration-none m-1">Edit</button>
-                                    <button data-bs-toggle="modal" data-bs-target="#raedcontact<?= $row['ID'] ?>" class="badge bg-info text-decoration-none m-1">read</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#editcontact<?= $row['CONTACT_ID'] ?>" class="badge bg-primary text-decoration-none m-1">Edit</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#raedcontact<?= $row['CONTACT_ID'] ?>" class="badge bg-info text-decoration-none m-1">read</button>
                                 </div>
                             </td>
                             <?php ?>
                         </tr>
                         <!--//***** */  Modal read contact ********-->
 
-                        <div class="modal fade" id="raedcontact<?= $row['ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="raedcontact<?= $row['CONTACT_ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -87,7 +93,7 @@ include 'crud.php';
                         <!--  -->
 
                         <!-- //? edit contact modal -->
-                        <div class="modal fade" id="editcontact<?= $row['ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="editcontact<?= $row['CONTACT_ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -98,7 +104,7 @@ include 'crud.php';
                                         <form method="POST">
                                             <div class="d-flex ">
                                                 <div class="mb-3">
-                                                    <input type="hidden" name="contact_id" value="<?php echo $row['ID'] ?>"">
+                                                    <input type="hidden" name="contact_id" value="<?php echo $row['CONTACT_ID'] ?>"">
                                                     <label for="exampleInputEmail1" class="form-label">Name</label>
                                                     <input type="text" class="form-control" name="editname" value="<?php echo $row['NAME'] ?>" id="email" aria-describedby="emailHelp">
 

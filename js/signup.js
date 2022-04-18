@@ -9,7 +9,7 @@ console.log(inscription);
 
 inscription.addEventListener("submit", (e) => {
     
-    console.log(username.value);
+    // console.log(username.value);
   validateInputs();
   if (valid == false) {
     e.preventDefault();
@@ -76,4 +76,5 @@ const validateInputs = () => {
   } else {
     setSuccess(password2, "password est valid");
   }
+ 
 };

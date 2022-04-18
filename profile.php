@@ -1,11 +1,10 @@
 <?php
-session_start();
+// session_start();
+
 ?>
 <?php
-include 'model.php';
-$user = new Users() ;
-$signup = $user->signup() ;
-$login = $user->login() ;
+include 'crud.php';
+echo $_SESSION['ID_USER'] ;
 // if (empty($_SESSION['username'])) {
 
 //   header('location: index.php');

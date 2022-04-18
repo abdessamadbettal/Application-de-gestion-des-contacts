@@ -1,4 +1,5 @@
 <?php
+session_start();
 class database {
     private $server = "localhost";
     private $username = "root";
@@ -25,6 +26,7 @@ class database {
     }
 }
 class Users extends database{
+    protected $user_id ;
     public function signup(){
         if (isset($_POST['signup'])) {
             $username = $_POST['username'];
@@ -33,6 +35,7 @@ class Users extends database{
         
             $query = "INSERT INTO users (USERNAME ,  PASSWORD ) VALUES ('$username'  , '$password' ) ";
             mysqli_query($this->conn, $query);
+
             // $_SESSION['message'] = "your account has ben aded avec seccus";
             // $_SESSION['alert'] = "alert alert-success";
             /* header('location: index.php');*/
@@ -40,16 +43,6 @@ class Users extends database{
             // $_SESSION['alert'] = "alert alert-success";
         }
         
-        // if(isset($_POST['signup'])) {
-            
-            
-            // if (isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2']) ){
-            //     echo "<script>alert('yes ')</script>";
-            // }
-            // else {
-            //     // echo "<script>alert('no ')</script>";
-            // }
-        // }
     }
     public function login(){
         if (isset($_POST['login'])) {
@@ -65,7 +58,13 @@ class Users extends database{
                 setcookie('username', $username, time() + 60 * 60 * 24);
                 setcookie('password', $password, time() + 60 * 60 * 24);
               }
-            //   print_r($row);
+              echo "<pre>" ;
+              print_r($row);
+              echo "</pre>" ;
+            //  $this->user_id = $row['ID_USER'] ;
+            //  echo $this->user_id ;
+             echo $_SESSION['ID_USER'] = $row['ID_USER'];
+             echo "<br>" ;
              echo $_SESSION['USERNAME'] = $row['USERNAME'];
               header('location:profile.php');
               
@@ -102,10 +101,13 @@ class Contact extends Users
             }
         }
     }
+    public function getid(){
+        return $this->user_id ;
+    }
     public function aficher()
     {
         // $data = null;
-        $query = "SELECT * FROM contacts ";
+        $query = "SELECT * FROM contacts where USER_FK = '$this->user_id' ";
         $sql = $this->conn->query($query) ;
         $row = mysqli_fetch_assoc($sql) ;
         
