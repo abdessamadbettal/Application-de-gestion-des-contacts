@@ -1,49 +1,3 @@
-<?php
-
-$title = "index";
-$navbar = false;
-include 'header.php';
-  include 'model.php';
-  $user = new Users() ;
-  $signup = $user->signup() ;
-  $login = $user->login() ;
-
-
-// if ( count($_POST) > 0 ){
-//   include 'model.php';
-//   $user = new Users() ;
-//   $error = $user->signup() ; 
-// echo "<pre>";
-// print_r($_POST) ;
-// echo "</pre>";
-// echo "<pre>";
-// // print_r($signup);
-// // echo $signup;
-// // echo $rows['NAME'] ;
-// echo "</pre>";  
-// }
-?>
-<div class="p-4">
-  <div class="container p-3" id="intro">
-    <p class="fs-1">Hello !</p>
-    <p class="fs-1">
-      <?php
-      
-      ?>
-    </p>
-    <p><a href="#"><span class="text-primary" data-bs-toggle="modal" data-bs-target="#signupmodal">Sign up</span></a> to start creating your contact list . </p>
-    <p> Alredy have an account ? <a href="#"><span class="text-primary" data-bs-toggle="modal" data-bs-target="#loginmodal">Login here</span></a> . </p>
-
-
-  </div>
-
-
-
-</div>
-
-
-<?php 
-require 'modal_signup.php' ;?>
 <!-- Modal Login -->
 <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -67,8 +21,8 @@ require 'modal_signup.php' ;?>
           </div>
 
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check">
-                  <label class="form-check-label" for="exampleCheck1">souvenir de moi</label>
+            <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
           </div>
           <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
         </form>
@@ -82,9 +36,3 @@ require 'modal_signup.php' ;?>
     </div>
   </div>
 </div>
-
-
-
-
-
-<?php include 'footer.php' ?>

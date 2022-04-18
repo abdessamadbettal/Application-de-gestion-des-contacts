@@ -24,7 +24,60 @@ class database {
         }
     }
 }
-class Contact extends database
+class Users extends database{
+    public function signup(){
+        if (isset($_POST['signup'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password1'];
+        
+        
+            $query = "INSERT INTO users (USERNAME ,  PASSWORD ) VALUES ('$username'  , '$password' ) ";
+            mysqli_query($this->conn, $query);
+            // $_SESSION['message'] = "your account has ben aded avec seccus";
+            // $_SESSION['alert'] = "alert alert-success";
+            /* header('location: index.php');*/
+            // $_SESSION['message'] = "has ben added avec seccus";
+            // $_SESSION['alert'] = "alert alert-success";
+        }
+        
+        // if(isset($_POST['signup'])) {
+            
+            
+            // if (isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2']) ){
+            //     echo "<script>alert('yes ')</script>";
+            // }
+            // else {
+            //     // echo "<script>alert('no ')</script>";
+            // }
+        // }
+    }
+    public function login(){
+        if (isset($_POST['login'])) {
+            echo $username = $_POST['username'];
+            echo $password = $_POST['password'];
+          
+            $query = "SELECT * FROM users WHERE USERNAME='$username' AND PASSWORD='$password' ";
+            $resultat = mysqli_query($this->conn, $query);
+            $row = mysqli_fetch_assoc($resultat);
+            $count = mysqli_num_rows($resultat);
+            if ($count == 1) {
+              if (isset($_POST['check'])) {
+                setcookie('username', $username, time() + 60 * 60 * 24);
+                setcookie('password', $password, time() + 60 * 60 * 24);
+              }
+            //   print_r($row);
+             echo $_SESSION['USERNAME'] = $row['USERNAME'];
+              header('location:profile.php');
+              
+            } else {
+            //   $error = "invlid password or email ";
+            }
+          }
+    }
+    
+}
+
+class Contact extends Users
 {
     
     public function ajouter()
@@ -37,7 +90,7 @@ class Contact extends database
                     $phone = $_POST["phone"];
                     $adress = $_POST["adress"];
 
-                    $query = "INSERT INTO contact (NAME , EMAIL , PHONE , ADRESS) VALUES ('$name' , '$email' ,'$phone' , '$adress') ";
+                    $query = "INSERT INTO contacts (NAME , EMAIL , PHONE , ADRESS) VALUES ('$name' , '$email' ,'$phone' , '$adress') ";
                     $sql = $this->conn->query($query);
                     // if ($sql = $this->conn->query($query)) {
                     //     // echo "<script>alert('contact add ')</script>";
@@ -51,20 +104,23 @@ class Contact extends database
     }
     public function aficher()
     {
-        $data = null;
-        $query = "SELECT * FROM contact ";
-        if ($sql = $this->conn->query($query)) {
-            while ($row = mysqli_fetch_assoc($sql)) {
-                $data[] = $row;
-            }
-        }
-        return $data;
+        // $data = null;
+        $query = "SELECT * FROM contacts ";
+        $sql = $this->conn->query($query) ;
+        $row = mysqli_fetch_assoc($sql) ;
+        
+        // if ($sql = $this->conn->query($query)) {
+        //     while ($row = mysqli_fetch_assoc($sql)) {
+        //         $data[] = $row;
+        //     }
+        // }
+        return $sql;
     }
     public function suprimer()
     {
         if (isset($_GET['supermer'])) {
             $id = $_GET['supermer'];
-            $query = "DELETE FROM contact WHERE ID = '$id'";
+            $query = "DELETE FROM contacts WHERE CONTACT_ID  = '$id'";
             mysqli_query($this->conn, $query);
             // $this->conn->query($query) ;
             echo "<script>window.location.href='contact.php';</script>";
@@ -74,7 +130,7 @@ class Contact extends database
     public function afficherSeule($id)
     {
         $data = null;
-        $query = "SELECT * FROM contact WHERE ID = '$id'";
+        $query = "SELECT * FROM contacts WHERE CONTACT_ID  = '$id'";
         if ($sql = $this->conn->query($query)) {
             while ($row = mysqli_fetch_assoc($sql)) {
                 $data[] = $row;
@@ -92,7 +148,7 @@ class Contact extends database
             $adress = $_POST['adress'];
 
 
-            $queri = "UPDATE contact SET NAME = '$name' , EMAIL = '$email' , PHONE = '$phone' , ADRESS = '$adress'   WHERE ID='$id'";
+            $queri = "UPDATE contacts SET NAME = '$name' , EMAIL = '$email' , PHONE = '$phone' , ADRESS = '$adress'   WHERE CONTACT_ID ='$id'";
             mysqli_query($this->conn, $queri);
             // $_SESSION['message'] = "has ben modified avec seccus";
             // $_SESSION['alert'] = "alert alert-primary";

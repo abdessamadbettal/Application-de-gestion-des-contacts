@@ -25,7 +25,8 @@ include 'crud.php';
                 <?php     
                 
                 echo "<pre>";
-                // print_r($rows);
+                print_r($rows);
+                // echo $rows['NAME'] ;
                 echo "</pre>";
                 $i = 1;
                 if (!empty($rows)) {
