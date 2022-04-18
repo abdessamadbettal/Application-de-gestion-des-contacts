@@ -6,8 +6,7 @@ $model = new Contact() ;
 $modifier = $model->modifier() ; 
 $supermer = $model->suprimer() ;
 $ajouter = $model->ajouter();
-$rows = $model->aficher();
+$rows = $model->aficher($_SESSION['ID_USER']);
 $login =  $model->login();
 $signup = $model->signup() ;
-$id = $model->getid() ;
 

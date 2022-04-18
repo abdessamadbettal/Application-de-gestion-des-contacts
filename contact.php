@@ -1,13 +1,15 @@
 <?php 
-include 'header.php';
+
 include 'crud.php';
 // session_start();
+// echo $_SESSION['ID_USER'] ;
+// echo $model->user_id ;
 
 ?>
 <?php
 $title = "profile";
 $navbar = true;
-
+include 'header.php';
 ?>
 <div class="p-4">
     <div class="container p-3" id="intro">
@@ -30,8 +32,8 @@ $navbar = true;
                 <?php     
                 
                 echo "<pre>";
-                print_r($rows);
-                echo $id ;
+                // print_r($rows);
+                // echo $id ;
                 // echo $rows['NAME'] ;
                 echo "</pre>";
                 $i = 1;
@@ -51,7 +53,7 @@ $navbar = true;
                                     <!-- <a href="delet.php?edit=<?php /* $row['ID']; */ ?>" class="badge bg-primary text-decoration-none m-1">Edit</a> -->
                                     <!-- <a href="contact.php?delet=<?php /* $row['ID']; */ ?>" class="badge bg-danger text-decoration-none m-1">Delet</a> -->
                                     <a href="contact.php?supermer=<?= $row['CONTACT_ID']; ?>" class="badge bg-danger text-decoration-none m-1">delet</a>
-                                    <a href="read.php?read=<?= $row['CONTACT_ID']; ?>" class="badge bg-info text-decoration-none m-1">afficher dans un autre page</a>
+                                    <a href="read.php?read=<?= $row['CONTACT_ID']; ?>" class="badge bg-info text-decoration-none m-1">afficher</a>
 
                                 </div>
                                 <!-- // pour le model -->

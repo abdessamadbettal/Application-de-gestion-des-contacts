@@ -26,7 +26,7 @@ class database {
     }
 }
 class Users extends database{
-    protected $user_id ;
+    public $user_id  ;
     public function signup(){
         if (isset($_POST['signup'])) {
             $username = $_POST['username'];
@@ -101,14 +101,12 @@ class Contact extends Users
             }
         }
     }
-    public function getid(){
-        return $this->user_id ;
-    }
-    public function aficher()
+    
+    public function aficher($id)
     {
         // $data = null;
-        $query = "SELECT * FROM contacts where USER_FK = '$this->user_id' ";
-        $sql = $this->conn->query($query) ;
+        $query = "SELECT * FROM contacts where USER_FK = '$id' ";
+        $sql = $this->conn-> query($query) ;
         $row = mysqli_fetch_assoc($sql) ;
         
         // if ($sql = $this->conn->query($query)) {
