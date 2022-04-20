@@ -1,9 +1,10 @@
 <?php 
 
 include 'crud.php';
-// session_start();
-// echo $_SESSION['ID_USER'] ;
-// echo $model->user_id ;
+if (empty($_SESSION['USERNAME'])) {
+
+    header('location: index.php');
+  } else {
 
 ?>
 <?php
@@ -11,11 +12,18 @@ $title = "profile";
 $navbar = true;
 include 'header.php';
 ?>
+<?php if (isset($_SESSION['message'])) : ?>
+          <div class=" <?php echo $_SESSION['alert'] ; ?> container mt-4">
+            <?php echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+          </div>
+        <?php endif ?>
 <div class="p-4">
     <div class="container p-3" id="intro">
 
-
-        <p class="fs-1">Contact list <?php echo $_SESSION['ID_USER'] ?></p>
+    
+        <p class="fs-1">Contact list </p>
         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addcontact">Add contact</button>
         <table class="table table-hover">
             <thead>
@@ -172,32 +180,36 @@ include 'header.php';
             <div class="modal-body">
 
 
-                <form method="POST">
+                <form method="POST"  id="addcontact">
                     <div class="d-flex ">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="email" aria-describedby="emailHelp">
+                            <input type="text" class=" form-control" name="name" id="name" aria-describedby="emailHelp">
+                            <div class="h6 small d-none alert"></div>
 
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">email</label>
-                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                            <input type="email" class=" form-control" name="email" id="email" aria-describedby="emailHelp">
+                            <div class="h6 small d-none alert"></div>
 
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">phone</label>
                         <input type="text" class="form-control" name="phone" id="phone">
+                        <div class="h6 small d-none alert"></div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">adress</label>
                         <input type="text" class="form-control" name="adress" id="adress">
+                        <div class="h6 small d-none alert"></div>
                     </div>
                     <div class="mb-3 form-check">
                         <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
                         <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary w-100">save</button>
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary w-100">save</button>
                 </form>
 
 
@@ -211,4 +223,7 @@ include 'header.php';
 
 </div>
 </div>
-<?php include 'footer.php' ?>
+<?php 
+include 'footer.php' ;
+};
+?>

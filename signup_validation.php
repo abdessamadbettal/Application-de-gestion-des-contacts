@@ -1,5 +1,7 @@
-  // !validation de sign up
-const inscription = document.getElementById("inscription");
+<?php
+// **************** js validation  ****************
+echo '<script >';
+echo 'const inscription = document.getElementById("inscription");
 const username = document.getElementById("username");
 // const email = document.getElementById("email1");
 const password = document.getElementById("password1");
@@ -9,14 +11,14 @@ let valid = true;
 console.log(inscription);
 
 inscription.addEventListener("submit", (e) => {
-    
     // console.log(username.value);
   validateInputs();
   if (valid == false) {
     e.preventDefault();
   }
-});
+});' ;
 
+echo '
 const setError = (element, message) => {
   const inputControl = element.parentElement;
   const errorDisplay = inputControl.querySelector(".alert");
@@ -37,16 +39,22 @@ const setSuccess = (element, message) => {
   valid = true;
 };
 
+
 const validateInputs = () => {
   const usernameValue = username.value.trim();
   const emailValue = email.value.trim();
   const passwordValue = password.value.trim();
   const password2Value = password2.value.trim();
 
+
   if (usernameValue === "") {
       console.log("username est unvalid");
     setError(username, "Username est vide");
-  } else {
+  }
+//   else if (usernameExist === true){
+//     setError(username, "Username est deja existé");
+//   }
+   else {
     console.log(`username est valid`);
     setSuccess(username, "Username est valid");
   }
@@ -69,7 +77,5 @@ const validateInputs = () => {
     setSuccess(password2, "password est valid");
   }
  
-};  
-
-
-
+};' ;
+echo '</script>';

@@ -32,7 +32,7 @@
             <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
             <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
           </div>
-          <button type="submit" name="signup" class="btn btn-primary w-100">Sign up</button>
+          <button type="submit" name="register" class="btn btn-primary w-100">Sign up</button>
         </form>
         <div class="p-2">
           <p> Alredy have an account ? <a href="#"><span class="text-primary" data-bs-toggle="modal" data-bs-target="#loginmodal">Login here</span></a> . </p>

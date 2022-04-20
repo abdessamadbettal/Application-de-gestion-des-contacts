@@ -1,9 +1,13 @@
-  // !validation de sign up
+// !validation de sign up
 const inscription = document.getElementById("inscription");
 const username = document.getElementById("username");
 // const email = document.getElementById("email1");
 const password = document.getElementById("password1");
 const password2 = document.getElementById("password2");
+let regexName = /[A-Za-z]{4,20}$/;
+let regexEmail = /^(^[a-z0-9-_.][a-z0-9]+@(gmail|outlook).(com|fr|ma))$/;
+let regexPhone = /[A-Za-z]{6,16}[0-9]{2,16}$/;
+let regexAdress = /[A-Za-z]{6,16}[0-9]{2,16}$/;
 let valid = true;
 
 console.log(inscription);
@@ -69,7 +73,4 @@ const validateInputs = () => {
     setSuccess(password2, "password est valid");
   }
  
-};  
-
-
-
+};

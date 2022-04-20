@@ -19,7 +19,7 @@
                 <a class="navbar-brand fs-6" href="contact.php">contact</a>
                 <a class="navbar-brand fs-6" href="index.php">logout</a>
                 <?php else :?>
-                 <a class="navbar-brand fs-6" href="profile.php">Login</a>
+                 <a class="navbar-brand fs-6" data-bs-toggle="modal" data-bs-target="#loginmodal">Login</a>
                  <?php endif ;?>
               </div>
               

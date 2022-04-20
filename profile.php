@@ -4,11 +4,10 @@
 ?>
 <?php
 include 'crud.php';
-echo $_SESSION['ID_USER'] ;
-// if (empty($_SESSION['username'])) {
+if (empty($_SESSION['USERNAME'])) {
 
-//   header('location: index.php');
-// } else {
+  header('location: index.php');
+} else {
 ?>
 <?php 
 $title = "profile";
@@ -22,8 +21,8 @@ include 'header.php';
                 <!-- <p> Alredy have an account ? <a href="#"><span class="text-primary" data-bs-toggle="modal" data-bs-target="#loginmodal">Login here</span></a> . </p> -->
                 <p class="fs-4">your profile </p>
                 <p class="fs-5">username : <?= $_SESSION['USERNAME'];  ?></p>
-                <p class="fs-5">Signup date : 55/66/99</p>
-                <p class="fs-5">last login : 55/66/99</p>
+                <p class="fs-5">Signup date : <?= $_SESSION['DATE_REGISTER'];  ?></p>
+                <p class="fs-5">last login : <?=  $_SESSION['LAST_LOGIN'];  ?></p>
             </div>
 
 
@@ -39,5 +38,5 @@ include 'header.php';
 
         <?php
          include 'footer.php';
-//  }; ?>
+ }; ?>
         
