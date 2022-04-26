@@ -92,19 +92,10 @@ class Users extends database
     } */
 }
 
-class Contact extends Users
+class Contact extends database
 {
 
-    public function suprimer()
-    {
-        if (isset($_GET['supermer'])) {
-            $id = $_GET['supermer'];
-            $query = "DELETE FROM contacts WHERE CONTACT_ID  = '$id'";
-            mysqli_query($this->conn, $query);
-            $_SESSION['message'] = "has ben deleted avec seccus";
-            $_SESSION['alert'] = "alert alert-danger";
-        }
-    }
+    
     public function ajouter($id_user)
     {
         if (isset($_POST['submit'])) {
@@ -135,17 +126,7 @@ class Contact extends Users
     }
     
 
-    public function afficherSeule($id)
-    {
-        $data = null;
-        $query = "SELECT * FROM contacts WHERE CONTACT_ID  = '$id'";
-        if ($sql = $this->conn->query($query)) {
-            while ($row = mysqli_fetch_assoc($sql)) {
-                $data[] = $row;
-            }
-        }
-        return $data;
-    }
+    
     public function modifier()
     {
         if (isset($_POST['edit'])) {
@@ -162,6 +143,27 @@ class Contact extends Users
             $_SESSION['alert'] = "alert alert-primary";
             // header('location: contact.php');
         }
+    }
+    public function suprimer()
+    {
+        if (isset($_GET['supermer'])) {
+            $id = $_GET['supermer'];
+            $query = "DELETE FROM contacts WHERE CONTACT_ID  = '$id'";
+            mysqli_query($this->conn, $query);
+            $_SESSION['message'] = "has ben deleted avec seccus";
+            $_SESSION['alert'] = "alert alert-danger";
+        }
+    }
+    public function afficherSeule($id)
+    {
+        $data = null;
+        $query = "SELECT * FROM contacts WHERE CONTACT_ID  = '$id'";
+        if ($sql = $this->conn->query($query)) {
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
     }
 }
  

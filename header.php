@@ -15,7 +15,7 @@
               <a class="navbar-brand" href="#">Contact list</a>
               <div>
                   <?php if($navbar == true) :?>
-                <a class="navbar-brand fs-6" href="profile.php">Alex</a>
+                <a class="navbar-brand fs-6" href="profile.php"><?= $_SESSION['USERNAME'];  ?></a>
                 <a class="navbar-brand fs-6" href="contact.php">contact</a>
                 <a class="navbar-brand fs-6" href="index.php">logout</a>
                 <?php else :?>

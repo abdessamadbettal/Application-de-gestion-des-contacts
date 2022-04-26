@@ -1,29 +1,29 @@
 // !validation de sign up
 console.log("js est liee");
 console.log("js est liee");
-const addcontact = document.getElementById("addcontact");
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const phone = document.getElementById("phone");
-const adress = document.getElementById("adress");
-let regexName = /[A-Za-z]{4,20}$/;
-let regexEmail = /^(^[a-z0-9-_.][a-z0-9]+@(gmail|outlook).(com|fr|ma))$/;
-let regexPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-let regexAdress = /^[#.0-9a-zA-Z\s,-]+$/;
-let valid = true;
+const editcontact = document.getElementById("editcontact");
+const editname = document.getElementById("editname");
+const edtadress = document.getElementById("editadress");
+const edtemail = document.getElementById("editemail");
+const edtphone = document.getElementById("editphone");
+let edtregexName = /[A-Za-z]{4,20}$/;
+let edtregexEmail = /^(^[a-z0-9-_.][a-z0-9]+@(gmail|outlook).(com|fr|ma))$/;
+let edtregexPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+let edtregexAdress = /^[#.0-9a-zA-Z\s,-]+$/;
+let editvalid = true;
 
-console.log(addcontact);
+// console.log(addcontact);
 
-addcontact.addEventListener("submit", (e) => {
+editcontact.addEventListener("submit", (e) => {
     
     // console.log(username.value);
   validateInputs();
-  if (valid === false) {
+  if (editvalid == false) {
     e.preventDefault();
   }
 });
 
-const setError = (element, message) => {
+const editsetError = (element, message) => {
   const inputControl = element.parentElement;
   const errorDisplay = inputControl.querySelector(".alert");
   element.classList.add("is-invalid") ;
@@ -32,7 +32,7 @@ const setError = (element, message) => {
   errorDisplay.classList.add("alert-danger");
   valid = false;
 };
-const setSuccess = (element, message) => {
+const editsetSuccess = (element, message) => {
   const inputControl = element.parentElement;
   const errorDisplay = inputControl.querySelector(".alert");
   element.classList.add("is-valid") 
@@ -43,7 +43,7 @@ const setSuccess = (element, message) => {
   valid = true;
 };
 
-const validateInputs = () => {
+const editvalidateInputs = () => {
   const nameValue = name.value.trim();
   const emailValue = email.value.trim();
   const phoneValue = phone.value.trim();
@@ -64,17 +64,16 @@ const validateInputs = () => {
   
   if (emailValue === "") {
     // console.log(`password est insufusante : ${emailValue}`);
-    setError(email, "email est vide");
+    setError(email, "Password est vide");
   } else if (regexEmail.test(emailValue) == false) {
     // console.log(`password est insufusante : ${emailValue}`);
     setError(email, "format email is not valid");
   } else {
-    setSuccess(email, "email est valid");
+    setSuccess(email, "password est valid");
   }
-
   if (phoneValue === "") {
     // console.log(`password est insufusante : ${phoneValue}`);
-    setError(phone, "Phone est vide");
+    setError(phone, "Password est vide");
   } else if (regexPhone.test(phoneValue) == false) {
     // console.log(`password est insufusante : ${phoneValue}`);
     setError(phone, "format phone value is not valid");

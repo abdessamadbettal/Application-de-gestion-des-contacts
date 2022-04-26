@@ -111,27 +111,31 @@ include 'header.php';
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST">
+                                        <form method="POST" id="editcontact">
                                             <div class="d-flex ">
                                                 <div class="mb-3">
-                                                    <input type="hidden" name="contact_id" value="<?php echo $row['CONTACT_ID'] ?>"">
+                                                    <input type="hidden"  name="contact_id" value="<?php echo $row['CONTACT_ID'] ?>" >
                                                     <label for="exampleInputEmail1" class="form-label">Name</label>
-                                                    <input type="text" class="form-control" name="editname" value="<?php echo $row['NAME'] ?>" id="email" aria-describedby="emailHelp">
+                                                    <input type="text" class="form-control" name="editname" value="<?php echo $row['NAME'] ?>" id="editname" aria-describedby="emailHelp">
+                                                    <div class="h6 small d-none alert"></div>
 
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">email</label>
-                                                    <input type="email" class="form-control" name="email" value="<?php echo $row['EMAIL'] ?>" id="email" aria-describedby="emailHelp">
+                                                    <input type="email" class="form-control" name="email" value="<?php echo $row['EMAIL'] ?>" id="editemail" aria-describedby="emailHelp">
+                                                    <div class="h6 small d-none alert"></div>
 
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">phone</label>
-                                                <input type="text" class="form-control" name="phone" value="<?php echo $row['PHONE'] ?>" id="phone">
+                                                <input type="text" class="form-control" name="phone" value="<?php echo $row['PHONE'] ?>" id="editphone">
+                                                <div class="h6 small d-none alert"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">adress</label>
-                                                <input type="text" class="form-control" value="<?php echo $row['ADRESS'] ?>" name="adress" id="adress">
+                                                <input type="text" class="form-control" value="<?php echo $row['ADRESS'] ?>" name="adress" id="editadress">
+                                                <div class="h6 small d-none alert"></div>
                                             </div>
                                             <!-- <div class="mb-3 form-check">
                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -224,6 +228,7 @@ include 'header.php';
 </div>
 </div>
 <?php 
+$contact = true ;
 include 'footer.php' ;
 };
 ?>
